@@ -1,7 +1,7 @@
 # ComuniCal
 
 ##Descrição
-- Calendário interativo e comunitário para melhorar a experiência da vivência durante a faculdade.
+- Calendário interativo e comunitário para melhorar a experiência da vivência do aluno durante a faculdade.
 
 ##Tecnologias Utilizadas
 - HTML5, [a decidir]
