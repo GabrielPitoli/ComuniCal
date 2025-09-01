@@ -17,6 +17,7 @@
 ##Integrantes
 - Gabriel Magnabosco Camargo - [Função]
 - Mike Junior dos Santos Vargas Ensergueix - [Função]
+- Gabriel Pitoli Bueno - [Função]
 
 ##Status do Projeto
 - Em Desenvolvimento
