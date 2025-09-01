@@ -15,8 +15,8 @@
 - Link para o protótipo no Jira ou Figma: [link]
 
 ##Integrantes
-- Gabriel Magnabosco Camargo
-- Mike Junior dos Santos Vargas Ensergueix
+- Gabriel Magnabosco Camargo - [Função]
+- Mike Junior dos Santos Vargas Ensergueix - [Função]
 
 ##Status do Projeto
 - Em Desenvolvimento
