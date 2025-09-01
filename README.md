@@ -12,7 +12,7 @@
 - (Explicação da Divisão de Pastas [fazer depois])
 
 ##Protótipo
-- Link para o protótipo no Jira ou Figma: [link]
+- Link para o protótipo no Figma: [link]
 
 ##Integrantes
 - Gabriel Magnabosco Camargo - [Função]
