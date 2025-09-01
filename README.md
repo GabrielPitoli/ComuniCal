@@ -1,6 +1,6 @@
 # ComuniCal
 
-##Descrição
+##Descrição.
 #Calendário interativo e comunitário para melhorar a experiência da vivência durante a faculdade.
 
 ##Tecnologias Utilizadas
