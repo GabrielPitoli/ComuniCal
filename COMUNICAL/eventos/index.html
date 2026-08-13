@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Eventos - COMUNICAL</title>
+    <link rel="stylesheet" href="eventos.css">
+    <script src="../auth.js"></script>
+</head>
+
+<body>
+    <header class="top-bar">
+        <div class="menu-icon" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="app-title">
+            <h1>Eventos</h1>
+        </div>
+        <div class="settings-icon">
+            ⚙
+        </div>
+    </header>
+
+    <main class="events-container">
+        <section class="search-section">
+            <div class="search-bar">
+                <div class="search-input-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Buscar eventos..." class="search-input">
+                    <button class="filter-btn" id="filterBtn">⋮</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="todos">📅 Todos</button>
+                <button class="category-tab" data-category="cultural">🎭 Cultural</button>
+                <button class="category-tab" data-category="esportivo">⚽ Esportivo</button>
+                <button class="category-tab" data-category="academico">🎓 Acadêmico</button>
+                <button class="category-tab" data-category="profissional">💼 Profissional</button>
+                <button class="category-tab" data-category="saude">🩺 Saúde</button>
+                <button class="category-tab" data-category="social">🎉 Social</button>
+            </div>
+        </section>
+    
+        <section class="events-grid-section">
+            <div class="events-grid" id="eventsGrid">
+                </div>
+        </section>
+
+        <button class="fab fab-important" id="showImportantFab">🚨</button>
+
+        <button class="fab" id="addEventFab">+</button>
+
+        <div class="scroll-spacer"></div>
+    </main>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Novo Evento</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label for="eventTitle">Título do Evento</label>
+                        <input type="text" id="eventTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDescription">Descrição</label>
+                        <textarea id="eventDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate">Data</label>
+                            <input type="date" id="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventTime">Horário</label>
+                            <input type="time" id="eventTime" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventImage">Imagem (Opcional)</label>
+                        <input type="file" id="eventImage" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventLocation">Local</label>
+                        <input type="text" id="eventLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventCategory">Categoria</label>
+                        <select id="eventCategory" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="cultural">🎭 Cultural</option>
+                            <option value="esportivo">⚽ Esportivo</option>
+                            <option value="academico">🎓 Acadêmico</option>
+                            <option value="profissional">💼 Profissional</option>
+                            <option value="saude">🩺 Saúde</option>
+                            <option value="social">🎉 Social</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="onlineEventGroup" style="display: none;">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="eventIsOnline">
+                            É um evento online?
+                        </label>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" id="btnCancel">Cancelar</button>
+                        <button type="submit" class="btn-save">Salvar Evento</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="detailsModalOverlay">
+        <div class="modal modal-details">
+            <div class="modal-header">
+                <button class="modal-back" id="detailsBack">←</button>
+                <h2>Detalhes do Evento</h2>
+                <button class="modal-close" id="detailsClose">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="details-image-container">
+                    <img id="detailsImage" src="" alt="Imagem do evento" style="display: none;">
+                    <div id="detailsPlaceholder" class="image-placeholder" style="display: none;">🖼️</div>
+                </div>
+                
+                <h3 id="detailsTitle" class="details-title">Título do evento</h3>
+                <p id="detailsDescription" class="details-description">Breve descrição do evento</p>
+                <p id="detailsDateTime" class="details-datetime">📅 data e horário do evento</p>
+                
+                <button class="details-location-btn" id="detailsLocation">
+                    📍 Localização do evento
+                </button>
+                
+                <div class="details-actions">
+                    <button class="details-action-btn" id="detailsShare" title="Compartilhar">
+                        <span>🔗</span>
+                    </button>
+                     <button class="details-action-btn" id="detailsReminder" title="Lembrar-me">
+                        <span>🔔</span>
+                    </button>
+                    <button class="details-action-btn details-delete" id="detailsDelete" title="Excluir">
+                        <span>🗑️</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="importantModalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Eventos Importantes</h2> <button class="modal-close" id="importantModalClose">×</button>
+            </div>
+            <div class="modal-body events-grid" id="importantEventsList">
+                </div>
+        </div>
+    </div>
+
+    <script src="eventos.js"></script>
+
+    <script>
+        verificarOrdem();
+        
+        const settingsIcon = document.querySelector('.settings-icon');
+        if (settingsIcon) {
+            settingsIcon.addEventListener('click', fazerLogout);
+        }
+    </script>
+</body>
+</html>

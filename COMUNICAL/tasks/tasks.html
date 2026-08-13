@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Tarefas Diárias</title>
+        <link rel="stylesheet" href="tasks.css">
+        <script src="../auth.js"></script> 
+    </head>
+
+    <body>
+        <header class="top-bar">
+            <div class="menu-icon" id="'menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="app-title">
+                <h1>Tarefas Diárias</h1>
+            </div>
+            <div class="settings-icon">
+                ⚙
+            </div>
+        </header>
+
+        <main class="tasks-container">
+            <section class="search-section">
+                <div class="search-bar">
+                    <div class="search-input-container">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" placeholder="Buscar tarefas..." class="search-input">
+                        <button class="filter-btn" id="filterBtn">⋮</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="date-filter-row">
+                <div class="filter-group">
+                    <select id="monthYearFilter"></select>
+                </div>
+                <div class="filter-group">
+                    <select id="dayFilter"></select>
+                </div>
+            </section>
+
+            <section class="tasks-grid-section">
+                <div class="tasks-grid" id="tasksGrid">
+                    </div>
+            </section>
+
+            <button class="fab fab-important" id="showImportantFab">🚨</button>
+            
+            <button class="fab" id="addTaskFab">+</button>
+
+            <div class="scroll-spacer"></div>
+        </main>
+
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Nova Tarefa</h2>
+                    <button class="modal-close" id="modalClose">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="taskForm">
+                        <div class="form-group">
+                            <label for="taskTitle">Título da Tarefa</label>
+                            <input type="text" id="taskTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskDescription">Descrição</label>
+                            <textarea id="taskDescription" rows="3"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="taskDate">Data</label>
+                                <input type="date" id="taskDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="taskTime">Horário</label>
+                                <input type="time" id="taskTime" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskLocation">Local</label>
+                            <input type="text" id="taskLocation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskCategory">Categoria</label>
+                            <select id="taskCategory" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="cultural">🎭 Cultural</option>
+                                <option value="esportivo">⚽ Esportivo</option>
+                                <option value="academico">🎓 Acadêmico</option>
+                                <option value="social">🎉 Social</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="onlineTaskGroup" style="display: none;">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="taskIsOnline">
+                                É uma atividade online?
+                            </label>
+                        </div>
+                        <div class="modal-actions">
+                            <button type="button" class="btn-cancel" id="btnCancel">Cancelar</button>
+                            <button type="submit" class="btn-save">Salvar Tarefa</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-overlay" id="importantModalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Tarefas Importantes</h2>
+                    <button class="modal-close" id="importantModalClose">×</button>
+                </div>
+                <div class="modal-body" id="importantTasksBody">
+                    
+                    <h3 class="important-subheader">-- A Fazer --</h3>
+                    <div id="importantTasksAbertas">
+                        </div>
+                    
+                    <h3 class="important-subheader">-- Concluídas --</h3>
+                    <div id="importantTasksConcluidas">
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <script src="tasks.js"></script>
+
+        <script>
+            verificarOrdem();
+            
+            const settingsIcon = document.querySelector('.settings-icon');
+            if (settingsIcon) {
+                settingsIcon.addEventListener('click', fazerLogout);
+            }
+        </script>
+    </body>
+</html>

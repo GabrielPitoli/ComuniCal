@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMUNICAL - 2025</title>
+    <link rel="stylesheet" href="calendario-mobile.css">
+    <script src="../auth.js"></script>
+</head>
+
+<body>
+    <header class="top-bar">
+         <div class="menu-icon" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="app-title">
+            <h1>COMUNICAL</h1>
+        </div>
+        <div class="settings-icon">
+            ⚙
+        </div>
+    </header>
+
+    <main class="mobile-container">
+        <section class="calendar-section">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="nav-btn">‹</button>
+                    <h2 id="monthYear">Janeiro 2025</h2>
+                    <button id="nextMonth" class="nav-btn">›</button>
+                </div>
+                
+                <div class="calendar-grid">
+                    <div class="weekdays">
+                        <div class="weekday">Dom</div>
+                        <div class="weekday">Seg</div>
+                        <div class="weekday">Ter</div>
+                        <div class="weekday">Qua</div>
+                        <div class="weekday">Qui</div>
+                        <div class="weekday">Sex</div>
+                        <div class="weekday">Sáb</div>
+                    </div>
+                    
+                    <div id="calendarDays" class="days-grid">
+                    </div>
+                </div>
+                
+                <div class="month-selector">
+                    <select id="monthSelect">
+                        <option value="0">Janeiro</option>
+                        <option value="1">Fevereiro</option>
+                        <option value="2">Março</option>
+                        <option value="3">Abril</option>
+                        <option value="4">Maio</option>
+                        <option value="5">Junho</option>
+                        <option value="6">Julho</option>
+                        <option value="7">Agosto</option>
+                        <option value="8">Setembro</option>
+                        <option value="9">Outubro</option>
+                        <option value="10">Novembro</option>
+                        <option value="11">Dezembro</option>
+                    </select>
+                    <select id="yearSelect">
+                        <option value="2024">2024</option>
+                        <option value="2025" selected>2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="info-section-mobile">
+            <h2>📅 Informações do Dia Selecionado</h2>
+            <div id="selectedDateInfo" class="date-info">
+                <p>Selecione uma data no calendário para ver as informações aqui.</p>
+            </div>
+        </section>
+
+
+        <section class="daily-tasks-section">
+            <div class="section-header">
+                <h2>📋 Tarefas Diárias</h2>
+                <a href="../tasks/tasks.html" class="add-btn">+ Mais tarefas</a>
+            </div>
+            
+            <div class="tasks-container">
+                <div class="task-input-area" id="taskInputArea" style="display: none;">
+                    <input type="text" id="taskInput" placeholder="Digite sua nova tarefa..." maxlength="100">
+                    <div class="task-input-buttons">
+                        <button id="saveTaskBtn" class="save-btn">Salvar</button>
+                        <button id="cancelTaskBtn" class="cancel-btn">Cancelar</button>
+                    </div>
+                </div>
+                
+                <div class="tasks-list" id="tasksList">
+                    <div class="task-item">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="future-events-section">
+
+            <div class="section-header">
+                <h2>🗓️ Futuros Eventos</h2>
+                <a href="../eventos/index.html" class="add-btn">+ Mais eventos</a>
+            </div>
+            <div class="events-container">
+                <div class="events-list" id="eventsList">
+                    </div>
+            </div>
+        </section>
+
+        <div class="scroll-spacer"></div>
+    </main>
+
+    <script src="calendario.js"></script>
+
+    <script>
+        verificarLogin();
+        marcarCalendario();
+    
+        const settingsIcon = document.querySelector('.settings-icon');
+        if (settingsIcon) {
+            settingsIcon.addEventListener('click', fazerLogout);
+        }
+    </script>
+</body>
+</html>
